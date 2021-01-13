@@ -1,11 +1,19 @@
 import React from "react";
-import { StyleSheet, Text, Image, View } from "react-native";
+import { StyleSheet, Text, Image, View, Platform } from "react-native";
 import { RectButton } from "react-native-gesture-handler";
 import Header from "../Header";
 import { Order } from "../types";
 import dayjs from "dayjs";
 import "dayjs/locale/pt-br";
 import relativeTime from "dayjs/plugin/relativeTime";
+import "intl";
+import "intl/locale-data/jsonp/pt-BR.js";
+
+if (Platform.OS === "android") {
+  if (typeof (Intl as any).disableRegExpRestore === "function") {
+    (Intl as any).disableRegExpRestore();
+  }
+}
 
 dayjs.locale("pt-br");
 dayjs.extend(relativeTime);
@@ -18,8 +26,6 @@ function dateFromNow(date: string) {
   return dayjs(date).fromNow();
 }
 
-/*
-// cannot find intl
 function formatPrice(price: number) {
   const formatter = new Intl.NumberFormat("pt-BR", {
     style: "currency",
@@ -27,14 +33,13 @@ function formatPrice(price: number) {
   });
   return formatter.format(price);
 }
-  */
 
 export default function OrderCard({ order }: Props) {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.orderName}>Pedido {order.id}</Text>
-        <Text style={styles.orderPrice}>{/*formatPrice(*/ order.total}</Text>
+        <Text style={styles.orderPrice}>{formatPrice(order.total)}</Text>
       </View>
       <Text style={styles.text}>{dateFromNow(order.moment)}</Text>
       <View style={styles.productsList}>
