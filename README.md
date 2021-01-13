@@ -4,7 +4,7 @@ Repositório do projeto desenvolvido na semana DevSuperior 2, evento da DevSuper
 
 ## O projeto
 
-O projeto consiste em uma aplicação web e um aplicativo de encomenda de produtos. A ideia é implementar o layout proposto, onde o usuário pode escolher produtos e uma localidade no mapa, e fazer um pedido de entrega.
+O projeto consiste em uma aplicação web e um aplicativo de encomenda de produtos. A ideia é implementar o layout proposto, onde o usuário pode escolher produtos e uma localidade no mapa, e fazer um pedido de entrega. O pedido pode ser entregue pelo aplicativo mobile.
 
 ## Tecnologias
 
@@ -29,6 +29,14 @@ Além disso, é preciso alterar o arquivo "application.properties", utilizando s
 ### Front-end
 
 Para rodar o front-end é necessário apenas entrar na pasta e rodar o comando
+
+```bash
+npm install && npm start
+```
+
+### Mobile
+
+Para rodar o mobile é neessário ter o expo instalado no celular e no computador, e rodar o comando
 
 ```bash
 npm install && npm start
